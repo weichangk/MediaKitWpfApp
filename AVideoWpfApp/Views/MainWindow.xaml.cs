@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AVideoWpfApp.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,30 @@ namespace AVideoWpfApp.Views
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += Window_Loaded;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            TopWidgetOperBind();
+        }
+
+        private void TopWidgetOperBind()
+        {
+            //top_widget如果不设置Background则MouseMove无效！
+            top_widget.MouseMove += (s, e) => {
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    this.DragMove();
+                }
+            };
+
+            if (DataContext is ITopWidgetOper vm)
+            {
+                vm.Close += () => { this.Close(); };
+                vm.Min += () => { this.WindowState = WindowState.Minimized; };
+            }
+
         }
     }
 }

@@ -25,15 +25,15 @@
                 <RowDefinition Height="40" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <DockPanel>
+            <DockPanel x:Name="top_widget" Background="Transparent">
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                     <Button
                         Margin="0,0,10,0"
                         Padding="0"
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Command="{Binding SendOperCommand}"
-                        CommandParameter="">
+                        Command="{Binding TopWidgetOperCommand}"
+                        CommandParameter="Menu">
                         <md:PackIcon
                             Width="20"
                             Height="20"
@@ -45,7 +45,7 @@
                         Padding="0"
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Command="{Binding SendOperCommand}"
+                        Command="{Binding TopWidgetOperCommand}"
                         CommandParameter="Min">
                         <md:PackIcon
                             Width="20"
@@ -58,7 +58,7 @@
                         Padding="0"
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Command="{Binding SendOperCommand}"
+                        Command="{Binding TopWidgetOperCommand}"
                         CommandParameter="Close"
                         Cursor="Hand">
                         <md:PackIcon
