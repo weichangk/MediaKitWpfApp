@@ -1,6 +1,8 @@
 ﻿using Prism.Ioc;
 using System.Windows;
 using AVideoWpfApp.Views;
+using System.Windows.Controls;
+using MediaKitWpfApp.Views;
 
 namespace AVideoWpfApp
 {
@@ -17,7 +19,7 @@ namespace AVideoWpfApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterForNavigation<WorkAreaPage>();
         }
     }
 }

@@ -1,31 +1,24 @@
-﻿using Prism.Commands;
+﻿using MediaKitWpfApp.Common;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 
 namespace AVideoWpfApp.ViewModels
 {
     public class MainButtonViewModel : BindableBase
     {
-        public DelegateCommand<string> OperCommand { get; private set; }
+        readonly IEventAggregator ea;
+        public DelegateCommand<string> OpenFuncCommand { get; private set; }
 
-        public MainButtonViewModel()
+        public MainButtonViewModel(IEventAggregator ea)
         {
-            OperCommand = new DelegateCommand<string>(Oper);
+            this.ea = ea;
+            OpenFuncCommand = new DelegateCommand<string>(OpenFunc);
         }
 
-        private void Oper(string oper)
+        private void OpenFunc(string oper)
         {
-            switch (oper)
-            {
-                case "Open":
-                    DoOpen();
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void DoOpen()
-        {
+            ea.GetEvent<OpenFuncEvent>().Publish(oper);
         }
     }
 }
