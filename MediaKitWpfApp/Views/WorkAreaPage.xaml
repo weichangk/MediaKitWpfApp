@@ -24,10 +24,15 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
             </Grid>
-            <ContentControl
+            <Image
                 Grid.Row="1"
-                prism:RegionManager.RegionName="WorkAreaRegion"
-                Background="Red" />
+                Source="/Resources/Image/addfile.png"
+                Stretch="None">
+                <Image.InputBindings>
+                    <MouseBinding Command="{Binding OpenFileCommand, Mode=OneTime}" Gesture="LeftClick" />
+                </Image.InputBindings>
+            </Image>
+            <ContentControl Grid.Row="1" prism:RegionManager.RegionName="WorkAreaRegion" />
             <Grid Grid.Row="2" />
         </Grid>
     </Border>

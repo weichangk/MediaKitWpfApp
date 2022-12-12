@@ -1,10 +1,10 @@
 ﻿using Prism.Ioc;
 using System.Windows;
-using AVideoWpfApp.Views;
+using MediaKitWpfApp.Views;
 using System.Windows.Controls;
 using MediaKitWpfApp.Views;
 
-namespace AVideoWpfApp
+namespace MediaKitWpfApp
 {
     /// <summary>
     /// Interaction logic for App.xaml

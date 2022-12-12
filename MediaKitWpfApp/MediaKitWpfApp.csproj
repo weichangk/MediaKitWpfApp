@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Image\addfile.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Image\addfile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
   </ItemGroup>

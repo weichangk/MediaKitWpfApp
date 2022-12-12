@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MediaKitWpfApp.Views
 {
     /// <summary>
-    /// MainButtonPage.xaml 的交互逻辑
+    /// WorkfinishItem.xaml 的交互逻辑
     /// </summary>
-    public partial class MainButtonPage : UserControl
+    public partial class WorkfinishItem : UserControl
     {
-        public MainButtonPage()
+        public WorkfinishItem()
         {
             InitializeComponent();
         }

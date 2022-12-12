@@ -9,24 +9,10 @@ namespace MediaKitWpfApp.ViewModels
     {
         private readonly IEventAggregator ea;
         private readonly IRegionManager regionManager;
-        public WorkAreaPageViewModel(IEventAggregator ea, IRegionManager regionManager)
+        public WorkAreaPageViewModel(IEventAggregator _ea, IRegionManager _rm)
         {
-            this.ea = ea;
-            this.regionManager = regionManager;
-
-            this.ea.GetEvent<OpenFuncEvent>().Subscribe(OpenFuncReceived);
-        }
-
-        private void OpenFuncReceived(string func)
-        {
-            switch (func)
-            {
-                case "VideoConverter":
-                    regionManager.RequestNavigate("WorkAreaRegion", "WorkAreaPage");
-                    break;
-                default:
-                    break;
-            }
+            ea = _ea;
+            regionManager = _rm;
         }
     }
 }

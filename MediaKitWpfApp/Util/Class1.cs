@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AVideoWpfApp.Util
+namespace MediaKitWpfApp.Util
 {
     internal class Class1
     {

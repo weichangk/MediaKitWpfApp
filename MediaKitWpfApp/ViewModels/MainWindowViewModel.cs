@@ -1,38 +1,43 @@
-﻿using AVideoWpfApp.Common;
-using AVideoWpfApp.Views;
+﻿using MediaKitWpfApp.Common;
+using MediaKitWpfApp.Views;
+using MediaKitWpfApp.Common;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
-using System.Windows.Controls;
 
-namespace AVideoWpfApp.ViewModels
+namespace MediaKitWpfApp.ViewModels
 {
     public class MainWindowViewModel : BindableBase, ITopWidgetOper
     {
-        readonly IEventAggregator ea;
-        readonly IRegionManager regionManager;
+        private readonly IEventAggregator ea;
+        private readonly IRegionManager regionManager;
 
         public DelegateCommand<string> TopWidgetOperCommand { get; private set; }
+        public Action Home { get; set; } = () => { };
         public Action Menu { get; set; } = () => { };
         public Action Min { get; set; } = () => { };
         public Action Close { get; set; } = () => { };
 
-        public MainWindowViewModel(IRegionManager regionManager, IEventAggregator ea)
+        public MainWindowViewModel(IRegionManager _rm, IEventAggregator _ea)
         {
-            this.regionManager = regionManager;
-            this.ea = ea;
+            regionManager = _rm;
+            ea = _ea;
 
             TopWidgetOperCommand = new DelegateCommand<string>(TopWidgetOper);
 
-            regionManager.RegisterViewWithRegion("ContentRegion", typeof(MainButtonPage));
+            regionManager.RegisterViewWithRegion("MainRegion", typeof(MainButtonPage));
+            ea.GetEvent<OpenFuncEvent>().Subscribe(OpenFuncReceived);
         }
 
         private void TopWidgetOper(string oper)
         {
             switch (oper)
             {
+                case "Home":
+                    DoHome();
+                    break;
                 case "Menu":
                     DoMenu();
                     break;
@@ -47,9 +52,26 @@ namespace AVideoWpfApp.ViewModels
             }
         }
 
+        private void DoHome()
+        {
+            regionManager.RequestNavigate("MainRegion", "MainButtonPage");
+        }
+
         private void DoMenu()
         {
             //Menu?.Invoke();
+        }
+
+        private void OpenFuncReceived(string func)
+        {
+            switch (func)
+            {
+                case "VideoConverter":
+                    regionManager.RequestNavigate("MainRegion", "WorkAreaPage");
+                    break;
+                default:
+                    break;
+            }
         }
 
     }
