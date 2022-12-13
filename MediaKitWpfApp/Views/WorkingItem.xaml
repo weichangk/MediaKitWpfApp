@@ -16,11 +16,14 @@
         CornerRadius="8">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="110" />
                 <ColumnDefinition />
-                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="110" />
             </Grid.ColumnDefinitions>
-            <Image />
+            <Image
+                Width="90"
+                Height="70"
+                Margin="10" />
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -28,9 +31,16 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBlock />
-                <ContentControl prism:RegionManager.RegionName="WorkingItemDetailRegion" />
+                <ContentControl Grid.Row="1" prism:RegionManager.RegionName="WorkingItemDetailRegion" />
+                <ProgressBar Grid.Row="2" Value="75" />
             </Grid>
-            <Button Grid.Column="2" />
+            <Button
+                Grid.Column="2"
+                Width="90"
+                Height="30"
+                Margin="10"
+                Content="MID"
+                Style="{StaticResource MaterialDesignPaperButton}" />
         </Grid>
     </Border>
 </UserControl>

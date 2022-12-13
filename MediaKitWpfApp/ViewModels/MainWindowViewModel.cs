@@ -1,6 +1,5 @@
 ﻿using MediaKitWpfApp.Common;
 using MediaKitWpfApp.Views;
-using MediaKitWpfApp.Common;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -12,7 +11,7 @@ namespace MediaKitWpfApp.ViewModels
     public class MainWindowViewModel : BindableBase, ITopWidgetOper
     {
         private readonly IEventAggregator ea;
-        private readonly IRegionManager regionManager;
+        private readonly IRegionManager rm;
 
         public DelegateCommand<string> TopWidgetOperCommand { get; private set; }
         public Action Home { get; set; } = () => { };
@@ -22,12 +21,12 @@ namespace MediaKitWpfApp.ViewModels
 
         public MainWindowViewModel(IRegionManager _rm, IEventAggregator _ea)
         {
-            regionManager = _rm;
+            rm = _rm;
             ea = _ea;
 
             TopWidgetOperCommand = new DelegateCommand<string>(TopWidgetOper);
 
-            regionManager.RegisterViewWithRegion("MainRegion", typeof(MainButtonPage));
+            rm.RegisterViewWithRegion("MainRegion", typeof(MainButtonPage));
             ea.GetEvent<OpenFuncEvent>().Subscribe(OpenFuncReceived);
         }
 
@@ -54,7 +53,7 @@ namespace MediaKitWpfApp.ViewModels
 
         private void DoHome()
         {
-            regionManager.RequestNavigate("MainRegion", "MainButtonPage");
+            rm.RequestNavigate("MainRegion", "MainButtonPage");
         }
 
         private void DoMenu()
@@ -64,10 +63,12 @@ namespace MediaKitWpfApp.ViewModels
 
         private void OpenFuncReceived(string func)
         {
+            var parameters = new NavigationParameters();
+            parameters.Add("func", func);
             switch (func)
             {
-                case "VideoConverter":
-                    regionManager.RequestNavigate("MainRegion", "WorkAreaPage");
+                case nameof(VideoFuncEnum.VideoConverter):
+                    rm.RequestNavigate("MainRegion", "WorkAreaPage", parameters);
                     break;
                 default:
                     break;

@@ -1,0 +1,99 @@
+﻿<UserControl
+    x:Class="MediaKitWpfApp.Views.VideoConverterDetail"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MediaKitWpfApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="False"
+    Background="Transparent"
+    FontSize="13">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Horizontal">
+            <Image
+                Width="16"
+                Height="16"
+                Source="/Resources/Image/icon16/icon16_video_decoration.png" />
+            <TextBlock
+                Margin="3,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="MP4" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <Image
+                Width="16"
+                Height="16"
+                Source="/Resources/Image/icon16/icon16_video_decoration.png" />
+            <TextBlock
+                Margin="3,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="1276*532" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Horizontal">
+            <Image
+                Width="16"
+                Height="16"
+                Source="/Resources/Image/icon16/icon16_video_decoration.png" />
+            <TextBlock
+                Margin="3,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="11.57MB" />
+        </StackPanel>
+        <StackPanel Grid.Column="3" Orientation="Horizontal">
+            <Image
+                Width="16"
+                Height="16"
+                Source="/Resources/Image/icon16/icon16_video_decoration.png" />
+            <TextBlock
+                Margin="3,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="30:30" />
+        </StackPanel>
+        <md:PackIcon
+            Grid.Column="4"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Kind="CogOutline" />
+        <StackPanel Grid.Column="5" Orientation="Horizontal">
+            <Image
+                Width="16"
+                Height="16"
+                Source="/Resources/Image/icon16/icon16_video_decoration.png" />
+            <TextBlock
+                Margin="3,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="MP4" />
+        </StackPanel>
+        <StackPanel Grid.Column="6" Orientation="Horizontal">
+            <Image
+                Width="16"
+                Height="16"
+                Source="/Resources/Image/icon16/icon16_video_decoration.png" />
+            <TextBlock
+                Margin="3,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="1276*532" />
+        </StackPanel>
+        <Button Grid.Column="7" Style="{StaticResource MaterialDesignIconButton}">
+            <md:PackIcon Kind="CogOutline" />
+        </Button>
+    </Grid>
+</UserControl>

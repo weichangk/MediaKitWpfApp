@@ -20,6 +20,7 @@ namespace MediaKitWpfApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<WorkAreaPage>();
+            containerRegistry.RegisterForNavigation<WorkingPage>();
         }
     }
 }

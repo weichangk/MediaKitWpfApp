@@ -9,10 +9,26 @@
 
   <ItemGroup>
     <None Remove="Resources\Image\addfile.png" />
+    <None Remove="Resources\Image\icon16\icon16_resolution_decoration.png" />
+    <None Remove="Resources\Image\icon16\icon16_size_decoration.png" />
+    <None Remove="Resources\Image\icon16\icon16_time_decoration.png" />
+    <None Remove="Resources\Image\icon16\icon16_video_decoration.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Resources\Image\addfile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Image\icon16\icon16_resolution_decoration.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Image\icon16\icon16_size_decoration.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Image\icon16\icon16_time_decoration.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Image\icon16\icon16_video_decoration.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

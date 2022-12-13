@@ -10,7 +10,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="Transparent"
     mc:Ignorable="d">
-    <Border CornerRadius="0,0,8,8">
+    <Border Background="Red" CornerRadius="0,0,8,8">
         <ItemsControl ItemsSource="{Binding WorkingItems}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
