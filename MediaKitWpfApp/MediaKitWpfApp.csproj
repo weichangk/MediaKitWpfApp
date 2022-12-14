@@ -13,6 +13,7 @@
     <None Remove="Resources\Image\icon16\icon16_size_decoration.png" />
     <None Remove="Resources\Image\icon16\icon16_time_decoration.png" />
     <None Remove="Resources\Image\icon16\icon16_video_decoration.png" />
+    <None Remove="Resources\Image\icon32\icon32_add_file.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +30,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Image\icon16\icon16_video_decoration.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Image\icon32\icon32_add_file.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
