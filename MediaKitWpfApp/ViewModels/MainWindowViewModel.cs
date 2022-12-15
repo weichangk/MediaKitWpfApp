@@ -65,14 +65,9 @@ namespace MediaKitWpfApp.ViewModels
         {
             var parameters = new NavigationParameters();
             parameters.Add("func", func);
-            switch (func)
-            {
-                case nameof(VideoFuncEnum.VideoConverter):
-                    rm.RequestNavigate("MainRegion", "WorkAreaPage", parameters);
-                    break;
-                default:
-                    break;
-            }
+            //rm.RequestNavigate("MainRegion", "WorkAreaPage", parameters);
+            rm.RequestNavigate("MainRegion", "VideoConverterWorkAreaPage", parameters);
+            
         }
 
     }

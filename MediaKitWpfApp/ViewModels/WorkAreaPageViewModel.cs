@@ -1,10 +1,10 @@
-﻿using MediaKitWpfApp.Common;
+﻿using ImTools;
+using MediaKitWpfApp.Common;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
-using System.Security.Cryptography;
 
 namespace MediaKitWpfApp.ViewModels
 {
@@ -33,6 +33,15 @@ namespace MediaKitWpfApp.ViewModels
             var func = navigationContext.Parameters["func"];
             if (func != null)
                 videoFunc = Enum.Parse<VideoFuncEnum>(func.ToString());
+            switch (videoFunc)
+            {
+                case VideoFuncEnum.VideoConverter:
+                    break;
+                case VideoFuncEnum.VideoCompress:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -47,7 +56,9 @@ namespace MediaKitWpfApp.ViewModels
 
         private void OpenFile()
         {
-            rm.RequestNavigate("WorkAreaRegion", "WorkingPage");
+            var parameters = new NavigationParameters();
+            parameters.Add("func", videoFunc);
+            rm.RequestNavigate("WorkAreaRegion", "WorkingPage", parameters);
         }
     }
 }

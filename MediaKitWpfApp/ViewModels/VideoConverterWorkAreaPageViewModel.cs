@@ -1,35 +1,31 @@
-﻿using MediaKitWpfApp.Common;
+﻿using ImTools;
+using MediaKitWpfApp.Common;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
-using System.Collections.ObjectModel;
 
 namespace MediaKitWpfApp.ViewModels
 {
-    public class WorkingPageViewModel : BindableBase, INavigationAware
+    public class VideoConverterWorkAreaPageViewModel : BindableBase, INavigationAware
     {
         private readonly IEventAggregator ea;
+        private readonly IRegionManager rm;
+        public DelegateCommand OpenFileCommand { get; private set; }
 
         private VideoFuncEnum videoFunc;
-
         public VideoFuncEnum VideoFunc
         {
             get { return videoFunc; }
             set { videoFunc = value; }
         }
 
-        private ObservableCollection<WorkingItemViewModel> workingItems = new();
-
-        public ObservableCollection<WorkingItemViewModel> WorkingItems
-        {
-            get { return workingItems; }
-            set { workingItems = value; RaisePropertyChanged(); }
-        }
-
-        public WorkingPageViewModel(IEventAggregator _ea)
+        public VideoConverterWorkAreaPageViewModel(IEventAggregator _ea, IRegionManager _rm)
         {
             ea = _ea;
+            rm = _rm;
+            OpenFileCommand = new DelegateCommand(OpenFile);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -56,6 +52,13 @@ namespace MediaKitWpfApp.ViewModels
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
 
+        }
+
+        private void OpenFile()
+        {
+            var parameters = new NavigationParameters();
+            parameters.Add("func", videoFunc);
+            rm.RequestNavigate("WorkAreaRegion", "WorkingPage", parameters);
         }
     }
 }

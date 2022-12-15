@@ -11,77 +11,41 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="Transparent"
     mc:Ignorable="d">
-    <Border CornerRadius="8">
+    <Border
+        Margin="15,0,15,15"
+        Background="#FFFFFF"
+        CornerRadius="8">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
                 <RowDefinition />
                 <RowDefinition Height="80" />
             </Grid.RowDefinitions>
+            <Border BorderBrush="#F2F4F8" BorderThickness="0,0,0,1" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <StackPanel>
-                    <Rectangle Width="32" Height="32">
-                        <Rectangle.Style>
-                            <Style TargetType="{x:Type Rectangle}">
-                                <Setter Property="Fill">
-                                    <Setter.Value>
-                                        <ImageBrush
-                                            ImageSource="/Resources/Image/icon32/icon32_add_file.png"
-                                            TileMode="Tile"
-                                            Viewport="4,0,4,1" />
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Fill">
-                                            <Setter.Value>
-                                                <ImageBrush
-                                                    ImageSource="/Resources/Image/icon32/icon32_add_file.png"
-                                                    TileMode="Tile"
-                                                    Viewport="1,0,4,1" />
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Trigger>
-                                    <EventTrigger RoutedEvent="MouseEnter">
-                                        <BeginStoryboard>
-                                            <Storyboard />
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                    <EventTrigger RoutedEvent="MouseLeave" />
-                                </Style.Triggers>
-                            </Style>
-                        </Rectangle.Style>
-                    </Rectangle>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Width="32"
+                        Height="32"
+                        Margin="20,0,0,0"
+                        Command="{Binding OpenFileCommand}"
+                        Style="{StaticResource FourStateButton}"
+                        Tag="/Resources/Image/icon32/icon32_add_file.png" />
+                    <Button
+                        Width="32"
+                        Height="32"
+                        Margin="20,0,0,0"
+                        Command="{Binding OpenFileCommand}"
+                        Style="{StaticResource FourStateButton}"
+                        Tag="/Resources/Image/icon32/icon32_add_dvd.png" />
                 </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <Rectangle Width="32" Height="32">
-                        <Rectangle.Style>
-                            <Style TargetType="{x:Type Rectangle}">
-                                <Setter Property="Fill">
-                                    <Setter.Value>
-                                        <ImageBrush
-                                            ImageSource="/Resources/Image/icon32/icon32_add_file.png"
-                                            TileMode="Tile"
-                                            Viewport="4,0,4,1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </Rectangle.Style>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
-                                <i:InvokeCommandAction Command="{Binding _CmdMouseEnter}" />
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="MouseLeave">
-                                <i:InvokeCommandAction Command="{Binding _CmdMouseLeave}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Rectangle>
-                </StackPanel>
+                <StackPanel Grid.Column="1" />
+                <StackPanel Grid.Column="2" />
             </Grid>
             <Image
                 Grid.Row="1"
@@ -91,7 +55,14 @@
                     <MouseBinding Command="{Binding OpenFileCommand, Mode=OneTime}" Gesture="LeftClick" />
                 </Image.InputBindings>
             </Image>
-            <ContentControl Grid.Row="1" prism:RegionManager.RegionName="WorkAreaRegion" />
+            <ContentControl
+                Grid.Row="1"
+                Margin="15"
+                prism:RegionManager.RegionName="WorkAreaRegion" />
+            <Border
+                Grid.Row="2"
+                BorderBrush="#F2F4F8"
+                BorderThickness="0,1,0,0" />
             <Grid Grid.Row="2" />
         </Grid>
     </Border>
