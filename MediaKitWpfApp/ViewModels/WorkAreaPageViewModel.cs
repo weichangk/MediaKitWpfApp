@@ -1,4 +1,5 @@
 ﻿using MediaKitWpfApp.Common;
+using MediaKitWpfApp.Views;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -6,28 +7,40 @@ using Prism.Regions;
 
 namespace MediaKitWpfApp.ViewModels
 {
-    public class WorkAreaPageVideoConverterViewModel : WorkAreaPageViewModel
+    public class VideoConverterWorkAreaPageViewModel : WorkAreaPageViewModel
     {
-        public WorkAreaPageVideoConverterViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
+        public VideoConverterWorkAreaPageViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
         {
             VideoFunc = VideoFuncEnum.VideoConverter;
             WorkAreaRegionName = PrismRegionNameManager.VideoConverterWorkAreaRegionName;
         }
+
+        protected override void OpenFile()
+        {
+            ea.GetEvent<AddVideoConverterFileEvent>().Publish(new VideoFileInfo());
+            rm.RequestNavigate(WorkAreaRegionName, nameof(VideoConverterWorkingPage));
+        }
     }
 
-    public class WorkAreaPageVideoCompressViewModel : WorkAreaPageViewModel
+    public class VideoCompressWorkAreaPageViewModel : WorkAreaPageViewModel
     {
-        public WorkAreaPageVideoCompressViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
+        public VideoCompressWorkAreaPageViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
         {
             VideoFunc = VideoFuncEnum.VideoCompress;
             WorkAreaRegionName = PrismRegionNameManager.VideoCompressWorkAreaRegionName;
         }
+
+        protected override void OpenFile()
+        {
+            ea.GetEvent<AddVideoCompressFileEvent>().Publish(new VideoFileInfo());
+            rm.RequestNavigate(WorkAreaRegionName, nameof(VideoCompressWorkingPage));
+        }
     }
 
-    public class WorkAreaPageViewModel : BindableBase, INavigationAware
+    public class WorkAreaPageViewModel : BindableBase
     {
-        private readonly IEventAggregator ea;
-        private readonly IRegionManager rm;
+        protected readonly IEventAggregator ea;
+        protected readonly IRegionManager rm;
         public DelegateCommand OpenFileCommand { get; private set; }
 
         private VideoFuncEnum videoFunc;
@@ -52,26 +65,9 @@ namespace MediaKitWpfApp.ViewModels
             OpenFileCommand = new DelegateCommand(OpenFile);
         }
 
-        public void OnNavigatedTo(NavigationContext navigationContext)
+        protected virtual void OpenFile()
         {
-
-        }
-
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-
-        }
-
-        private void OpenFile()
-        {
-            var parameters = new NavigationParameters();
-            parameters.Add("func", videoFunc);
-            rm.RequestNavigate(workAreaRegionName, "WorkingPage", parameters);
+            rm.RequestNavigate(workAreaRegionName, nameof(WorkingPage));
         }
     }
 }

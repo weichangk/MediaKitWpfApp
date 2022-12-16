@@ -13,16 +13,16 @@ namespace MediaKitWpfApp.Views
         }
     }
 
-    public partial class WorkAreaPageVideoConverter : WorkAreaPage
+    public partial class VideoConverterWorkAreaPage : WorkAreaPage
     {
-        public WorkAreaPageVideoConverter() : base()
+        public VideoConverterWorkAreaPage() : base()
         {
         }
     }
 
-    public partial class WorkAreaPageVideoCompress : WorkAreaPage
+    public partial class VideoCompressWorkAreaPage : WorkAreaPage
     {
-        public WorkAreaPageVideoCompress() : base()
+        public VideoCompressWorkAreaPage() : base()
         {
         }
     }

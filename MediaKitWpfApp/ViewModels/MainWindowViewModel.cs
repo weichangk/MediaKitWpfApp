@@ -26,7 +26,7 @@ namespace MediaKitWpfApp.ViewModels
 
             TopWidgetOperCommand = new DelegateCommand<string>(TopWidgetOper);
 
-            rm.RegisterViewWithRegion("MainRegion", typeof(MainButtonPage));
+            rm.RegisterViewWithRegion(PrismRegionNameManager.MainRegionName, typeof(MainButtonPage));
             ea.GetEvent<OpenFuncEvent>().Subscribe(OpenFuncReceived);
         }
 
@@ -53,7 +53,7 @@ namespace MediaKitWpfApp.ViewModels
 
         private void DoHome()
         {
-            rm.RequestNavigate("MainRegion", "MainButtonPage");
+            rm.RequestNavigate(PrismRegionNameManager.MainRegionName, nameof(MainButtonPage));
         }
 
         private void DoMenu()
@@ -66,10 +66,10 @@ namespace MediaKitWpfApp.ViewModels
             switch (func)
             {
                 case nameof(VideoFuncEnum.VideoConverter):
-                    rm.RequestNavigate("MainRegion", "WorkAreaPageVideoConverter");
+                    rm.RequestNavigate(PrismRegionNameManager.MainRegionName, nameof(VideoConverterWorkAreaPage));
                     break;
                 case nameof(VideoFuncEnum.VideoCompress):
-                    rm.RequestNavigate("MainRegion", "WorkAreaPageVideoCompress");
+                    rm.RequestNavigate(PrismRegionNameManager.MainRegionName, nameof(VideoCompressWorkAreaPage));
                     break;
                 default:
                     break;

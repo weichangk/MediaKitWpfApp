@@ -18,11 +18,12 @@ namespace MediaKitWpfApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<WorkAreaPageVideoConverter>();
-            containerRegistry.RegisterForNavigation<WorkAreaPageVideoCompress>();
-            containerRegistry.RegisterForNavigation<WorkingPage>();
-            //containerRegistry.RegisterSingleton<WorkAreaPageViewModel>();
-            //containerRegistry.RegisterForNavigation<WorkAreaPageVideoConverter>();     
+            containerRegistry.RegisterForNavigation<VideoConverterWorkAreaPage>();
+            containerRegistry.RegisterForNavigation<VideoCompressWorkAreaPage>();
+            containerRegistry.RegisterForNavigation<VideoConverterWorkingPage>();
+            containerRegistry.RegisterForNavigation<VideoCompressWorkingPage>();
+            containerRegistry.RegisterForNavigation<VideoConverterWorkfinishPage>();
+            containerRegistry.RegisterForNavigation<VideoCompressWorkfinishPage>();
         }
     }
 }

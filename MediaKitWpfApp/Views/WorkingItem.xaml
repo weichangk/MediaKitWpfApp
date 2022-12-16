@@ -31,7 +31,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBlock />
-                <ContentControl Grid.Row="1" prism:RegionManager.RegionName="WorkingItemDetailRegion" />
+                <!--<ContentControl Grid.Row="1" prism:RegionManager.RegionName="WorkingItemDetailRegion" />-->
                 <ProgressBar Grid.Row="2" Value="75" />
             </Grid>
             <Button

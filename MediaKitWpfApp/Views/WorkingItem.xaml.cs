@@ -25,4 +25,18 @@ namespace MediaKitWpfApp.Views
             InitializeComponent();
         }
     }
+
+    public partial class VideoConverterWorkingItem : WorkingItem
+    {
+        public VideoConverterWorkingItem() : base()
+        { 
+        }
+    }
+
+    public partial class VideoCompressWorkingItem : WorkingItem
+    {
+        public VideoCompressWorkingItem() : base()
+        {
+        }
+    }
 }
