@@ -63,10 +63,17 @@ namespace MediaKitWpfApp.ViewModels
 
         private void OpenFuncReceived(string func)
         {
-            var parameters = new NavigationParameters();
-            parameters.Add("func", func);
-            //rm.RequestNavigate("MainRegion", "WorkAreaPage", parameters);
-            rm.RequestNavigate("MainRegion", "WorkAreaPageVideoConverter", parameters);
+            switch (func)
+            {
+                case nameof(VideoFuncEnum.VideoConverter):
+                    rm.RequestNavigate("MainRegion", "WorkAreaPageVideoConverter");
+                    break;
+                case nameof(VideoFuncEnum.VideoCompress):
+                    rm.RequestNavigate("MainRegion", "WorkAreaPageVideoCompress");
+                    break;
+                default:
+                    break;
+            }
 
         }
 

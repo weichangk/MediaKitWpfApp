@@ -1,13 +1,29 @@
-﻿using ImTools;
-using MediaKitWpfApp.Common;
+﻿using MediaKitWpfApp.Common;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
 
 namespace MediaKitWpfApp.ViewModels
 {
+    public class WorkAreaPageVideoConverterViewModel : WorkAreaPageViewModel
+    {
+        public WorkAreaPageVideoConverterViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
+        {
+            VideoFunc = VideoFuncEnum.VideoConverter;
+            WorkAreaRegionName = PrismRegionNameManager.VideoConverterWorkAreaRegionName;
+        }
+    }
+
+    public class WorkAreaPageVideoCompressViewModel : WorkAreaPageViewModel
+    {
+        public WorkAreaPageVideoCompressViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
+        {
+            VideoFunc = VideoFuncEnum.VideoCompress;
+            WorkAreaRegionName = PrismRegionNameManager.VideoCompressWorkAreaRegionName;
+        }
+    }
+
     public class WorkAreaPageViewModel : BindableBase, INavigationAware
     {
         private readonly IEventAggregator ea;
@@ -21,6 +37,14 @@ namespace MediaKitWpfApp.ViewModels
             set { videoFunc = value; }
         }
 
+        private string workAreaRegionName = PrismRegionNameManager.VideoConverterWorkAreaRegionName;
+
+        public string WorkAreaRegionName
+        {
+            get { return workAreaRegionName; }
+            set { workAreaRegionName = value; }
+        }
+
         public WorkAreaPageViewModel(IEventAggregator _ea, IRegionManager _rm)
         {
             ea = _ea;
@@ -30,18 +54,7 @@ namespace MediaKitWpfApp.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var func = navigationContext.Parameters["func"];
-            if (func != null)
-                videoFunc = Enum.Parse<VideoFuncEnum>(func.ToString());
-            switch (videoFunc)
-            {
-                case VideoFuncEnum.VideoConverter:
-                    break;
-                case VideoFuncEnum.VideoCompress:
-                    break;
-                default:
-                    break;
-            }
+
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -58,7 +71,7 @@ namespace MediaKitWpfApp.ViewModels
         {
             var parameters = new NavigationParameters();
             parameters.Add("func", videoFunc);
-            rm.RequestNavigate("WorkAreaRegion", "WorkingPage", parameters);
+            rm.RequestNavigate(workAreaRegionName, "WorkingPage", parameters);
         }
     }
 }

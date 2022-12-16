@@ -58,7 +58,7 @@
             <ContentControl
                 Grid.Row="1"
                 Margin="15"
-                prism:RegionManager.RegionName="WorkAreaRegion" />
+                prism:RegionManager.RegionName="{Binding WorkAreaRegionName}" />
             <Border
                 Grid.Row="2"
                 BorderBrush="#F2F4F8"

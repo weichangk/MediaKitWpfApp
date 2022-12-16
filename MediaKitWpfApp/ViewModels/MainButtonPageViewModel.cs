@@ -23,7 +23,7 @@ namespace MediaKitWpfApp.ViewModels
             mainButtons = new ObservableCollection<MainButtonViewModel>()
             {
                 new MainButtonViewModel(this.ea, "VideoConverter", "111", "1111111111"),
-                new MainButtonViewModel(this.ea, "", "222", "1111111111"),
+                new MainButtonViewModel(this.ea, "VideoCompress", "222", "1111111111"),
                 new MainButtonViewModel(this.ea, "", "333", "1111111111"),
                 new MainButtonViewModel(this.ea, "", "444", "1111111111"),
                 new MainButtonViewModel(this.ea, "", "555", "1111111111"),

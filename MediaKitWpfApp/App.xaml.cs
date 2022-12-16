@@ -1,8 +1,7 @@
 ﻿using Prism.Ioc;
 using System.Windows;
 using MediaKitWpfApp.Views;
-using System.Windows.Controls;
-using MediaKitWpfApp.Views;
+using MediaKitWpfApp.ViewModels;
 
 namespace MediaKitWpfApp
 {
@@ -19,9 +18,11 @@ namespace MediaKitWpfApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //containerRegistry.RegisterForNavigation<WorkAreaPage>();
+            containerRegistry.RegisterForNavigation<WorkAreaPageVideoConverter>();
+            containerRegistry.RegisterForNavigation<WorkAreaPageVideoCompress>();
             containerRegistry.RegisterForNavigation<WorkingPage>();
-            containerRegistry.RegisterForNavigation<WorkAreaPageVideoConverter>();     
+            //containerRegistry.RegisterSingleton<WorkAreaPageViewModel>();
+            //containerRegistry.RegisterForNavigation<WorkAreaPageVideoConverter>();     
         }
     }
 }
