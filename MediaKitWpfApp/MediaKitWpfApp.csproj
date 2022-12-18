@@ -13,8 +13,10 @@
     <None Remove="Resources\Image\icon16\icon16_size_decoration.png" />
     <None Remove="Resources\Image\icon16\icon16_time_decoration.png" />
     <None Remove="Resources\Image\icon16\icon16_video_decoration.png" />
+    <None Remove="Resources\Image\icon32\4state\iconbutton32_format_site.png" />
     <None Remove="Resources\Image\icon32\icon32_add_dvd.png" />
     <None Remove="Resources\Image\icon32\icon32_add_file.png" />
+    <None Remove="Resources\Image\icon32\icon32_arrow.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,10 +35,16 @@
     <Content Include="Resources\Image\icon16\icon16_video_decoration.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Image\icon32\icon32_add_dvd.png">
+    <Content Include="Resources\Image\icon32\4state\iconbutton32_format_site.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Image\icon32\icon32_add_file.png">
+    <Content Include="Resources\Image\icon32\4state\icon32_add_dvd.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Image\icon32\4state\icon32_add_file.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Image\icon32\icon32_arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

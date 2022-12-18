@@ -10,7 +10,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="Transparent"
     mc:Ignorable="d">
-    <Border Background="Red">
+    <Border Background="#FFFFFF">
         <ItemsControl ItemsSource="{Binding WorkingItems}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -22,8 +22,8 @@
                     <StackPanel>
                         <StackPanel.Resources>
                             <Style TargetType="{x:Type local:WorkingItem}">
-                                <Setter Property="Margin" Value="0,10,0,10" />
-                                <Setter Property="Height" Value="90" />
+                                <Setter Property="Margin" Value="0,0,0,10" />
+                                <Setter Property="Height" Value="104" />
                             </Style>
                         </StackPanel.Resources>
                     </StackPanel>

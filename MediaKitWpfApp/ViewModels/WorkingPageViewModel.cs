@@ -18,7 +18,7 @@ namespace MediaKitWpfApp.ViewModels
         public VideoConverterWorkingPageViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
         {
             VideoFunc = VideoFuncEnum.VideoConverter;
-            ea.GetEvent<AddVideoConverterFileEvent>().Subscribe(AddVideoFileReceived);
+            ea.GetEvent<AddVideoConverterWorkingFileEvent>().Subscribe(AddVideoFileReceived);
         }
 
         public override void AddVideoFileReceived(VideoFileInfo fileinfo)
@@ -29,22 +29,22 @@ namespace MediaKitWpfApp.ViewModels
 
     public class VideoCompressWorkingPageViewModel : WorkingPageViewModel
     {
-        //private ObservableCollection<VideoCompressWorkingItemViewModel> workingItems = new();
-        //public new ObservableCollection<VideoCompressWorkingItemViewModel> WorkingItems
-        //{
-        //    get { return workingItems; }
-        //    set { workingItems = value; RaisePropertyChanged(); }
-        //}
+        private ObservableCollection<VideoCompressWorkingItemViewModel> workingItems = new();
+        public new ObservableCollection<VideoCompressWorkingItemViewModel> WorkingItems
+        {
+            get { return workingItems; }
+            set { workingItems = value; RaisePropertyChanged(); }
+        }
 
         public VideoCompressWorkingPageViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
         {
             VideoFunc = VideoFuncEnum.VideoCompress;
-            ea.GetEvent<AddVideoCompressFileEvent>().Subscribe(AddVideoFileReceived);
+            ea.GetEvent<AddVideoCompressWorkingFileEvent>().Subscribe(AddVideoFileReceived);
         }
 
         public override void AddVideoFileReceived(VideoFileInfo fileinfo)
         {
-            WorkingItems.Add(new WorkingItemViewModel(ea, rm));
+            WorkingItems.Add(new VideoCompressWorkingItemViewModel(ea, rm));
         }
     }
 

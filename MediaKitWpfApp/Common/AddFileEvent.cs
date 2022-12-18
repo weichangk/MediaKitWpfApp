@@ -2,12 +2,12 @@
 
 namespace MediaKitWpfApp.Common
 {
-    public class AddVideoConverterFileEvent : PubSubEvent<VideoFileInfo>
+    public class AddVideoConverterWorkingFileEvent : PubSubEvent<VideoFileInfo>
     {
 
     }
 
-    public class AddVideoCompressFileEvent : PubSubEvent<VideoFileInfo>
+    public class AddVideoCompressWorkingFileEvent : PubSubEvent<VideoFileInfo>
     {
 
     }

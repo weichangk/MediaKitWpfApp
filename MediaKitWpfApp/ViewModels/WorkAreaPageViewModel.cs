@@ -17,8 +17,8 @@ namespace MediaKitWpfApp.ViewModels
 
         protected override void OpenFile()
         {
-            ea.GetEvent<AddVideoConverterFileEvent>().Publish(new VideoFileInfo());
             rm.RequestNavigate(WorkAreaRegionName, nameof(VideoConverterWorkingPage));
+            ea.GetEvent<AddVideoConverterWorkingFileEvent>().Publish(new VideoFileInfo());
         }
     }
 
@@ -32,8 +32,8 @@ namespace MediaKitWpfApp.ViewModels
 
         protected override void OpenFile()
         {
-            ea.GetEvent<AddVideoCompressFileEvent>().Publish(new VideoFileInfo());
             rm.RequestNavigate(WorkAreaRegionName, nameof(VideoCompressWorkingPage));
+            ea.GetEvent<AddVideoCompressWorkingFileEvent>().Publish(new VideoFileInfo());
         }
     }
 

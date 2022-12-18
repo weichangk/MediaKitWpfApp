@@ -35,14 +35,14 @@
                         Margin="20,0,0,0"
                         Command="{Binding OpenFileCommand}"
                         Style="{StaticResource FourStateButton}"
-                        Tag="/Resources/Image/icon32/icon32_add_file.png" />
+                        Tag="/Resources/Image/icon32/4state/icon32_add_file.png" />
                     <Button
                         Width="32"
                         Height="32"
                         Margin="20,0,0,0"
                         Command="{Binding OpenFileCommand}"
                         Style="{StaticResource FourStateButton}"
-                        Tag="/Resources/Image/icon32/icon32_add_dvd.png" />
+                        Tag="/Resources/Image/icon32/4state/icon32_add_dvd.png" />
                 </StackPanel>
                 <StackPanel Grid.Column="1" />
                 <StackPanel Grid.Column="2" />

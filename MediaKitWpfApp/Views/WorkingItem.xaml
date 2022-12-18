@@ -9,6 +9,7 @@
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="False"
     Background="Transparent"
+    FontSize="14"
     mc:Ignorable="d">
     <Border
         BorderBrush="#EEDBFF"
@@ -20,19 +21,22 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="110" />
             </Grid.ColumnDefinitions>
-            <Image
-                Width="90"
-                Height="70"
-                Margin="10" />
+            <Image Margin="10" />
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock />
-                <!--<ContentControl Grid.Row="1" prism:RegionManager.RegionName="WorkingItemDetailRegion" />-->
-                <ProgressBar Grid.Row="2" Value="75" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Text="这是一个视频文件的名称.MP4" />
+                <local:VideoConverterDetail Grid.Row="1" Visibility="Visible" />
+                <ProgressBar
+                    Grid.Row="2"
+                    Visibility="Hidden"
+                    Value="75" />
             </Grid>
             <Button
                 Grid.Column="2"
