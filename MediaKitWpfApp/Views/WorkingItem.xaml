@@ -43,8 +43,9 @@
                 Width="90"
                 Height="30"
                 Margin="10"
-                Content="MID"
-                Style="{StaticResource MaterialDesignPaperButton}" />
+                Content="转换"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                md:ButtonAssist.CornerRadius="15" Cursor="Hand"/>
         </Grid>
     </Border>
 </UserControl>

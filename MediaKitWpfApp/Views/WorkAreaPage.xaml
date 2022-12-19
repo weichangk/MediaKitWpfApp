@@ -22,7 +22,7 @@
                 <RowDefinition Height="80" />
             </Grid.RowDefinitions>
             <Border BorderBrush="#F2F4F8" BorderThickness="0,0,0,1" />
-            <Grid>
+            <Grid Cursor="Hand">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -44,7 +44,14 @@
                         Style="{StaticResource FourStateButton}"
                         Tag="/Resources/Image/icon32/4state/icon32_add_dvd.png" />
                 </StackPanel>
-                <StackPanel Grid.Column="1" />
+                <Border
+                    Grid.Column="1"
+                    Width="220"
+                    Margin="12"
+                    Background="#E4E8F0"
+                    CornerRadius="10">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" />
+                </Border>
                 <StackPanel Grid.Column="2" />
             </Grid>
             <Image
@@ -63,7 +70,22 @@
                 Grid.Row="2"
                 BorderBrush="#F2F4F8"
                 BorderThickness="0,1,0,0" />
-            <Grid Grid.Row="2" />
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="140" />
+                </Grid.ColumnDefinitions>
+                <local:VideoConverterOutSetting Margin="15,0,0,0" />
+                <Button
+                    Grid.Column="1"
+                    Width="110"
+                    Height="35"
+                    Margin="15,10,15,10"
+                    md:ButtonAssist.CornerRadius="15"
+                    Content="转换全部"
+                    Cursor="Hand"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+            </Grid>
         </Grid>
     </Border>
 </UserControl>
