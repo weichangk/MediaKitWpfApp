@@ -9,10 +9,24 @@ namespace MediaKitWpfApp.ViewModels
 {
     public class VideoConverterWorkAreaPageViewModel : WorkAreaPageViewModel
     {
+        public DelegateCommand OpenFormatCommand { get; private set; }
+        public DelegateCommand<string> OpenOutputFolderCommand { get; private set; }
+
+
+        private VideoConverterOutSettingViewModel videoConverterOutSettingViewModel;
+        public VideoConverterOutSettingViewModel VideoConverterOutSettingViewModel
+        {
+            get { return videoConverterOutSettingViewModel; }
+            set { videoConverterOutSettingViewModel = value; }
+        }
+
         public VideoConverterWorkAreaPageViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
         {
             VideoFunc = VideoFuncEnum.VideoConverter;
             WorkAreaRegionName = PrismRegionNameManager.VideoConverterWorkAreaRegionName;
+            videoConverterOutSettingViewModel = new VideoConverterOutSettingViewModel();
+            OpenFormatCommand = videoConverterOutSettingViewModel.OpenFormatCommand;
+            OpenOutputFolderCommand = videoConverterOutSettingViewModel.OutputFolderViewModel.OpenOutputFolderCommand;
         }
 
         protected override void OpenFile()

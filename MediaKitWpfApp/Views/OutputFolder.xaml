@@ -22,7 +22,7 @@
             Width="24"
             Height="24"
             Margin="5,0,0,0"
-            Command="{Binding OpenFileCommand}"
+            Command="{Binding OpenOutputFolderCommand}"
             Style="{StaticResource FourStateButton}"
             Tag="/Resources/Image/icon24/4state/icon24_file.png" />
     </StackPanel>
