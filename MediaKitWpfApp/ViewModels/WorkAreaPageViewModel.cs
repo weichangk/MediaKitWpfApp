@@ -1,32 +1,34 @@
 ﻿using MediaKitWpfApp.Common;
+using MediaKitWpfApp.Repositores;
 using MediaKitWpfApp.Views;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
+using System;
+using System.Collections.ObjectModel;
 
 namespace MediaKitWpfApp.ViewModels
 {
     public class VideoConverterWorkAreaPageViewModel : WorkAreaPageViewModel
     {
+
         public DelegateCommand OpenFormatCommand { get; private set; }
         public DelegateCommand<string> OpenOutputFolderCommand { get; private set; }
 
 
-        private VideoConverterOutSettingViewModel videoConverterOutSettingViewModel;
-        public VideoConverterOutSettingViewModel VideoConverterOutSettingViewModel
-        {
-            get { return videoConverterOutSettingViewModel; }
-            set { videoConverterOutSettingViewModel = value; }
-        }
+        public VideoConverterOutSettingViewModel VideoConverterOutSettingViewModel { get; set; }
+        public ObservableCollection<string> OutputFolderList { get; set; }
+        public string CurrentOutputFolder { get; set; }
 
-        public VideoConverterWorkAreaPageViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
+        public VideoConverterWorkAreaPageViewModel(IEventAggregator ea, IRegionManager rm, Lazy<ISysParmBaseRepository> sysParmBaseRepository) : base(ea, rm, sysParmBaseRepository)
         {
-            VideoFunc = VideoFuncEnum.VideoConverter;
             WorkAreaRegionName = PrismRegionNameManager.VideoConverterWorkAreaRegionName;
-            videoConverterOutSettingViewModel = new VideoConverterOutSettingViewModel();
-            OpenFormatCommand = videoConverterOutSettingViewModel.OpenFormatCommand;
-            OpenOutputFolderCommand = videoConverterOutSettingViewModel.OutputFolderViewModel.OpenOutputFolderCommand;
+            VideoConverterOutSettingViewModel = new VideoConverterOutSettingViewModel(sysParmBaseRepository);
+            OutputFolderList = VideoConverterOutSettingViewModel.OutputFolderViewModel.OutputFolderList;
+            CurrentOutputFolder = VideoConverterOutSettingViewModel.OutputFolderViewModel.CurrentOutputFolder;
+            OpenFormatCommand = VideoConverterOutSettingViewModel.OpenFormatCommand;
+            OpenOutputFolderCommand = VideoConverterOutSettingViewModel.OutputFolderViewModel.OpenOutputFolderCommand;
         }
 
         protected override void OpenFile()
@@ -38,9 +40,8 @@ namespace MediaKitWpfApp.ViewModels
 
     public class VideoCompressWorkAreaPageViewModel : WorkAreaPageViewModel
     {
-        public VideoCompressWorkAreaPageViewModel(IEventAggregator _ea, IRegionManager _rm) : base(_ea, _rm)
+        public VideoCompressWorkAreaPageViewModel(IEventAggregator ea, IRegionManager rm, Lazy<ISysParmBaseRepository> sysParmBaseRepository) : base(ea, rm, sysParmBaseRepository)
         {
-            VideoFunc = VideoFuncEnum.VideoCompress;
             WorkAreaRegionName = PrismRegionNameManager.VideoCompressWorkAreaRegionName;
         }
 
@@ -55,27 +56,25 @@ namespace MediaKitWpfApp.ViewModels
     {
         protected readonly IEventAggregator ea;
         protected readonly IRegionManager rm;
+        protected readonly Lazy<ISysParmBaseRepository> sysParmBaseRepository;
+
         public DelegateCommand OpenFileCommand { get; private set; }
 
-        private VideoFuncEnum videoFunc;
-        public VideoFuncEnum VideoFunc
-        {
-            get { return videoFunc; }
-            set { videoFunc = value; }
-        }
 
         private string workAreaRegionName = PrismRegionNameManager.VideoConverterWorkAreaRegionName;
-
         public string WorkAreaRegionName
         {
             get { return workAreaRegionName; }
             set { workAreaRegionName = value; }
         }
 
-        public WorkAreaPageViewModel(IEventAggregator _ea, IRegionManager _rm)
+
+        public WorkAreaPageViewModel(IEventAggregator ea, IRegionManager rm, Lazy<ISysParmBaseRepository> sysParmBaseRepository)
         {
-            ea = _ea;
-            rm = _rm;
+            this.ea = ea;
+            this.rm = rm;
+            this.sysParmBaseRepository = sysParmBaseRepository;
+
             OpenFileCommand = new DelegateCommand(OpenFile);
         }
 

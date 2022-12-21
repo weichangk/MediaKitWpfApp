@@ -17,7 +17,8 @@
             x:Name="OutputFolderComboBox"
             Width="200"
             Height="24"
-            md:HintAssist.Hint="Search" />
+            md:HintAssist.Hint="{Binding CurrentOutputFolder}"
+            ItemsSource="{Binding OutputFolderList}" />
         <Button
             Width="24"
             Height="24"
