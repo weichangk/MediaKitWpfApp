@@ -12,23 +12,35 @@ namespace MediaKitWpfApp.ViewModels
 {
     public class VideoConverterWorkAreaPageViewModel : WorkAreaPageViewModel
     {
-
-        public DelegateCommand OpenFormatCommand { get; private set; }
-        public DelegateCommand<string> OpenOutputFolderCommand { get; private set; }
-
-
         public VideoConverterOutSettingViewModel VideoConverterOutSettingViewModel { get; set; }
-        public ObservableCollection<string> OutputFolderList { get; set; }
-        public string CurrentOutputFolder { get; set; }
-
+        public DelegateCommand OpenFormatCommand
+        {
+            get { return VideoConverterOutSettingViewModel.OpenFormatCommand; }
+        }
+        public DelegateCommand<string> OpenOutputFolderCommand 
+        {
+            get { return VideoConverterOutSettingViewModel.OutputFolderViewModel.OpenOutputFolderCommand; }
+        }
+        public DelegateCommand<string> SaveOutputFolderCommand
+        {
+            get { return VideoConverterOutSettingViewModel.OutputFolderViewModel.SaveOutputFolderCommand; }
+        }
+        public ObservableCollection<string> OutputFolderList 
+        {
+            get { return VideoConverterOutSettingViewModel.OutputFolderViewModel.OutputFolderList; }
+        }
+        public string CurrentOutputFolder
+        {
+            get { return VideoConverterOutSettingViewModel.OutputFolderViewModel.CurrentOutputFolder; }
+        }
+        public int SelectedIndex
+        {
+            get { return VideoConverterOutSettingViewModel.OutputFolderViewModel.SelectedIndex; }
+        }
         public VideoConverterWorkAreaPageViewModel(IEventAggregator ea, IRegionManager rm, Lazy<ISysParmBaseRepository> sysParmBaseRepository) : base(ea, rm, sysParmBaseRepository)
         {
             WorkAreaRegionName = PrismRegionNameManager.VideoConverterWorkAreaRegionName;
             VideoConverterOutSettingViewModel = new VideoConverterOutSettingViewModel(sysParmBaseRepository);
-            OutputFolderList = VideoConverterOutSettingViewModel.OutputFolderViewModel.OutputFolderList;
-            CurrentOutputFolder = VideoConverterOutSettingViewModel.OutputFolderViewModel.CurrentOutputFolder;
-            OpenFormatCommand = VideoConverterOutSettingViewModel.OpenFormatCommand;
-            OpenOutputFolderCommand = VideoConverterOutSettingViewModel.OutputFolderViewModel.OpenOutputFolderCommand;
         }
 
         protected override void OpenFile()
