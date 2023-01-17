@@ -66,7 +66,7 @@ namespace MediaKitWpfApp.ViewModels
             switch (func)
             {
                 case nameof(VideoFuncEnum.VideoConverter):
-                    rm.RequestNavigate(PrismRegionNameManager.MainRegionName, nameof(VideoConverterWorkAreaPage));
+                    rm.RequestNavigate(PrismRegionNameManager.MainRegionName, nameof(VideoConverterPage));
                     break;
                 case nameof(VideoFuncEnum.VideoCompress):
                     rm.RequestNavigate(PrismRegionNameManager.MainRegionName, nameof(VideoCompressWorkAreaPage));

@@ -27,6 +27,9 @@ namespace MediaKitWpfApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterForNavigation<VideoConverterPage>();
+            containerRegistry.RegisterForNavigation<VideoConverterConvertingItemList>();
+
             containerRegistry.RegisterForNavigation<VideoConverterWorkAreaPage>();
             containerRegistry.RegisterForNavigation<VideoCompressWorkAreaPage>();
             containerRegistry.RegisterForNavigation<VideoConverterWorkingPage>();
